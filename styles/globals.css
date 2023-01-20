@@ -1,35 +1,90 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* load font */
+@layer base {
+    body {
+        @apply bg-gray-50;
+        @apply dark:bg-gray-900;
+
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-image: linear-gradient(rgba(255, 255, 255, .004) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .004) .1em, transparent .1em);
+        background-size: 3em 3em;
+    }
 }
 
-* {
-  box-sizing: border-box;
+@layer components {
+  .switch-dark-mode {
+      width: 52px;
+      height: 32px;
+      border-radius: 9999px;
+      position: relative;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .switch-dark-mode:focus {
+    box-shadow: 0 0 0 2px #212121;
+  }
+
+  .switch-dark-mode:hover {
+    background-color: #a5a5a5;
+  }
+  
+  .switch-dark-mode-thumb {
+    display: block;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 22px;
+    border-radius: 9999px;
+    transition: transform 100ms;
+    transform: translateX(2px);
+    will-change: transform;
+  }
+
+  .switch-dark-mode-thumb::after {
+    content: "🌑";
+  }
+
+  .switch-dark-mode-thumb[data-state='checked'] {
+    transform: translateX(19px);
+  }
+
+  .switch-dark-mode-thumb[data-state='checked']::after {
+    content: "☀️";
+  }
+
+  .image-bg-ilustration {
+    border-radius: 23% 77% 82% 18% / 72% 74% 26% 28%;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,0.028448879551820738) 0%, rgba(253,45,45,0) 100%);
+  }
 }
 
-main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* additional class */
+@layer utilities {
+    .hover-underline-animation {
+        @apply text-gray-700 dark:text-gray-50;
+        display: inline-block;
+        position: relative;
+    }
 
-code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-family: Menlo, Monaco, Lucida Console, Courier New, monospace;
-}
+    .hover-underline-animation::after {
+        @apply bg-gray-700 dark:bg-gray-50;
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 4px;
+        bottom: -3px;
+        left: 0;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
 
-.container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    .hover-underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
 }
