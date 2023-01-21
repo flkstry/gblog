@@ -12,11 +12,11 @@ export default function Home() {
           className="max-w-screen-lg w-full mx-auto p-4 my-4 h-96 flex flex-col items-center justify-center"
         >
           <h2 className={clsx(
-              "text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br",
+              "text-6xl font-bold",
               // light mode
-              "text-gray-600",
+              "text-gray-700",
               // dark mode
-              "dark:text-gray-300",)}
+              "dark:text-gray-100",)}
           >
             I'm{" "}
             <span className="font-extrabold">
@@ -26,7 +26,7 @@ export default function Home() {
           <p className={clsx(
               "text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-br mt-2",
               // light color
-              "from-sky-500 to-pink-500",
+              "from-sky-800 to-pink-600",
               // dark color
               "dark:from-pink-100 dark:to-sky-100",)}
           >

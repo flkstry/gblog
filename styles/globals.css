@@ -6,78 +6,36 @@
 /* load font */
 @layer base {
     body {
-        @apply bg-gray-50;
-        @apply dark:bg-gray-900;
-
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-image: linear-gradient(rgba(255, 255, 255, .004) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .004) .1em, transparent .1em);
-        background-size: 3em 3em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: linear-gradient(rgba(255, 255, 255, .0064) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .0064) .1em, transparent .1em);
+      background-size: 3em 3em;
     }
-}
 
-@layer components {
-  .switch-dark-mode {
-      width: 52px;
-      height: 32px;
-      border-radius: 9999px;
-      position: relative;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  .switch-dark-mode:focus {
-    box-shadow: 0 0 0 2px #212121;
-  }
+    body[color-scheme="dark"] {
+      background-color: hsla(217, 52%, 5%, 1);
+    }
 
-  .switch-dark-mode:hover {
-    background-color: #a5a5a5;
-  }
-  
-  .switch-dark-mode-thumb {
-    display: block;
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
-    line-height: 22px;
-    border-radius: 9999px;
-    transition: transform 100ms;
-    transform: translateX(2px);
-    will-change: transform;
-  }
-
-  .switch-dark-mode-thumb::after {
-    content: "🌑";
-  }
-
-  .switch-dark-mode-thumb[data-state='checked'] {
-    transform: translateX(19px);
-  }
-
-  .switch-dark-mode-thumb[data-state='checked']::after {
-    content: "☀️";
-  }
-
-  .image-bg-ilustration {
-    border-radius: 23% 77% 82% 18% / 72% 74% 26% 28%;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,0.028448879551820738) 0%, rgba(253,45,45,0) 100%);
-  }
+    body[color-scheme="light"] {
+      background-color: hsla(217, 53%, 98%, 1);
+    }
 }
 
 /* additional class */
 @layer utilities {
     .hover-underline-animation {
-        @apply text-gray-700 dark:text-gray-50;
+        @apply text-gray-700 dark:text-gray-200;
         display: inline-block;
         position: relative;
     }
 
     .hover-underline-animation::after {
-        @apply bg-gray-700 dark:bg-gray-50;
+        @apply bg-gray-700 dark:bg-gray-200;
         content: '';
         position: absolute;
         width: 100%;
         transform: scaleX(0);
-        height: 4px;
-        bottom: -3px;
+        height: 3px;
+        bottom: -2px;
         left: 0;
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
