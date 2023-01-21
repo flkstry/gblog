@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import LayoutModule from '@components/layout';
 import Seo from '@components/seo';
 
-export default function Home() {
+export default function ProjectPage() {
   return (
     <>
       <Seo />

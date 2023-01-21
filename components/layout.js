@@ -51,7 +51,7 @@ export default function LayoutModule({ children }) {
         }
     };
     return (
-        <main className="w-screen min-h-screen">
+        <main className="w-full min-h-screen">
             <header className="max-w-screen-lg w-full mx-auto p-4 flex gap-x-12 items-baseline">
                 <Link href="/">
                     <a>

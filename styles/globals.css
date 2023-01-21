@@ -6,17 +6,12 @@
 /* load font */
 @layer base {
     body {
+      @apply bg-gray-200 dark:bg-gray-900;
+
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-image: linear-gradient(rgba(255, 255, 255, .0064) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .0064) .1em, transparent .1em);
       background-size: 3em 3em;
-    }
-
-    body[color-scheme="dark"] {
-      background-color: hsla(217, 52%, 5%, 1);
-    }
-
-    body[color-scheme="light"] {
-      background-color: hsla(217, 53%, 98%, 1);
+      overflow-y: scroll;
     }
 }
 
