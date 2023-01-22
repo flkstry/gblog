@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const defaultMeta = {
-  title: 'Uzumaki Saburo',
+  title: 'Yasuo',
   siteName: 'luki3z.netlify.com',
   description:
     'An online portfolio and blog by Fahmi. Showcase of my projects, and some of my thoughts about website development.',
@@ -26,6 +26,7 @@ export default function Seo(props) {
     <Head>
       <title>{meta.title}</title>
       <meta name='robots' content={meta.robots} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />

@@ -52,27 +52,29 @@ export default function LayoutModule({ children }) {
     };
     return (
         <main className="w-full min-h-screen">
-            <header className="max-w-screen-lg w-full mx-auto p-4 flex gap-x-12 items-baseline">
+            <header className="max-w-screen-lg w-full mx-auto p-4 flex gap-x-6 sm:gap-x-12 items-center">
                 <Link href="/">
-                    <a>
+                    <a className="flex-shrink-0">
                         <h1 className={clsx(
-                            "text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br",
+                            "text-base font-extrabold text-transparent bg-clip-text bg-gradient-to-br",
                             // light color
-                            "from-sky-700 to-pink-500",
+                            "from-purple-800 to-fuchsia-800",
                             // dark color
-                            "dark:from-pink-300 dark:to-sky-100",
-                        )}>.site.</h1>
+                            "dark:from-fuchsia-100 dark:to-purple-100",
+                        )}>0 10 0</h1>
                     </a>
                 </Link>
                 {/* menu lists */}
-                <ul className="w-full flex items-center gap-x-8">
+                <ul className="w-full flex items-center gap-x-4 sm:gap-x-8 justify-end xs:justify-start">
                     {Navigation.map(item => <li key={item.to}>
                         <Link href={item.to}>
                             <a className="uppercase text-sm font-bold tracking-wide hover-underline-animation">{item.label}</a>
                         </Link>
                     </li>)}
                 </ul>
-                {renderThemeChanger()}
+                <div className="xs:block hidden">
+                    {renderThemeChanger()}
+                </div>
             </header>
             {children}
             <footer></footer>
