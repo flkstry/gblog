@@ -3,7 +3,6 @@ import Link from "next/link";
 
 export default function BlogItem({
     title,
-    summary,
     to,
     imgSrc,
 }) {
@@ -27,13 +26,10 @@ export default function BlogItem({
                 }
             </div>
             <Link href={to}>
-                <a className="mt-2 mb-4 w-fit text-2xl hover-underline-animation font-extrabold tracking-tight text-gray-700 dark:text-gray-200">
+                <a className="my-2 w-fit text-xl font-bold tracking-tight text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white">
                     {title}
                 </a>
             </Link>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-                {summary}
-            </p>
         </div>
     )
 }

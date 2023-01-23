@@ -4,14 +4,15 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { sync } from 'glob'
 
-const articlesPath = path.join(process.cwd(), 'data/articles')
+export const articlesPath = path.join(process.cwd(), 'data/blog')
+export const projectsPath = path.join(process.cwd(), 'data/project')
 
-export async function getSlug() {
-  const paths = sync(`${articlesPath}/*.mdx`)
+export async function getSlug(_path) {
+  const paths = sync(path.join(_path, `*.mdx`).replace(/\\/g, '/'))
 
-  return paths.map((path) => {
+  return paths.map((p) => {
     // holds the paths to the directory of the article
-    const pathContent = path.split('/')
+    const pathContent = p.split('/')
     const fileName = pathContent[pathContent.length - 1]
     const [slug, _extension] = fileName.split('.')
 
@@ -19,9 +20,9 @@ export async function getSlug() {
   })
 }
 
-export async function getArticleFromSlug(slug) {
-  const articleDir = path.join(articlesPath, `${slug}.mdx`)
-  const source = fs.readFileSync(articleDir)
+export async function getFromSlug(_path, slug) {
+  const dir = path.join(_path, `${slug}.mdx`)
+  const source = fs.readFileSync(dir)
   const { content, data } = matter(source)
 
   return {
@@ -37,13 +38,13 @@ export async function getArticleFromSlug(slug) {
   }
 }
 
-export async function getAllArticles() {
-  const articles = fs.readdirSync(path.join(process.cwd(), 'data/articles'))
+export async function getAll(_path) {
+  const res = fs.readdirSync(_path)
 
-  return articles.reduce((allArticles, articleSlug) => {
+  return res.reduce((allResult, slugResult) => {
     // get parsed data from mdx files in the "articles" dir
     const source = fs.readFileSync(
-      path.join(process.cwd(), 'data/articles', articleSlug),
+      path.join(_path, slugResult),
       'utf-8'
     )
     const { data } = matter(source)
@@ -51,10 +52,10 @@ export async function getAllArticles() {
     return [
       {
         ...data,
-        slug: articleSlug.replace('.mdx', ''),
+        slug: slugResult.replace('.mdx', ''),
         readingTime: readingTime(source).text,
       },
-      ...allArticles,
+      ...allResult,
     ]
   }, [])
 }

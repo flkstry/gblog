@@ -1,0 +1,33 @@
+---
+title: 'CSS Snippets: Underline Animation On Hover'
+publishedAt: '2023-01-20'
+excerpt: 'This is just CSS snippets for undeline animation when we hover a link'
+---
+
+Look at the header navigation and try to point the cursor to one of the available menus, you will see some kind of underline animation right?, how to do it?. Here is the css code to get that animation.
+
+```css
+.hover-underline-animation {
+    color: black;
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation::after {
+    background-color: black;
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+```
